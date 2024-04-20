@@ -36,6 +36,8 @@ php artisan migrate
 
 ## Consumir la API en Laravel
 
+#AuthController.
+
 1. Registro de Usuario
 
 Para registrar un nuevo usuario, envía una solicitud `POST` a la ruta `/api/register` con los siguientes datos en formato JSON:
@@ -63,11 +65,58 @@ Para iniciar sesión, envía una solicitud POST a la ruta /api/login con las cre
 
 
 ```json
-Copy code
 {
   "email": "usuario@example.com",
   "contrasena": "contraseña"
 }
 ```
 
+4. Cerrar Sesión
+Para cerrar la sesión del usuario autenticado, envía una solicitud POST a la ruta /api/logout incluyendo el token de acceso en el encabezado Authorization.
 
+
+```json
+{
+  Estos son solo ejemplos de cómo consumir la API en tu aplicación Laravel. Puedes usar cualquier cliente HTTP que prefieras para realizar estas solicitudes.
+}
+```
+
+#DataController
+
+Este controlador maneja las solicitudes relacionadas con la obtención de datos geográficos, como estados, ciudades y colonias.
+
+Métodos Disponibles
+
+1. StateShow
+
+Este método devuelve todos los estados disponibles en la base de datos.
+
+- **Ruta:** `GET /api/states`
+- **Parámetros de Solicitud:** Ninguno
+- **Respuesta:** Una colección de todos los estados.
+
+2. CityShow
+
+Este método devuelve todas las ciudades asociadas a un estado específico.
+
+- **Ruta:** `GET /api/cities`
+- **Parámetros de Solicitud:** 
+  - `clave_estado`: El ID del estado del cual se desean obtener las ciudades.
+- **Respuesta:** Una colección de todas las ciudades asociadas al estado especificado.
+
+3. NeighborhoodShow
+
+Este método devuelve todas las colonias asociadas a una ciudad específica.
+
+- **Ruta:** `GET /api/neighborhoods`
+- **Parámetros de Solicitud:** 
+  - `clave_ciudad`: El ID de la ciudad de la cual se desean obtener las colonias.
+- **Respuesta:** Una colección de todas las colonias asociadas a la ciudad especificada.
+
+Manejo de Errores
+
+Si alguna solicitud no encuentra los datos correspondientes, se devolverá una respuesta con un mensaje de error y un código de estado `404 Not Found`.
+
+---
+
+Este es un resumen de los métodos disponibles en el controlador `DataController`. Asegúrate de ajustar las rutas y la lógica según las necesidades específicas de tu aplicación.
