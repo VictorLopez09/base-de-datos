@@ -10,9 +10,11 @@ El primer paso es instalar todas las dependencias del proyecto utilizando Compos
 
 ```php
 composer install
+```
 
 ## 2. Ejecución de migraciones 
 
 ```php
 php artisan migrate
+```
 
