@@ -8,5 +8,11 @@ Después de descargar un proyecto en Laravel desde GitHub, es importante seguir 
 
 El primer paso es instalar todas las dependencias del proyecto utilizando Composer. Para ello, abre una terminal en la raíz del proyecto y ejecuta el siguiente comando:
 
-```bash
+```php
 composer install
+
+## 2. Ejecución de migraciones 
+
+```php
+php artisan migrate
+
