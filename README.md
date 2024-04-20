@@ -1,11 +1,9 @@
 ## base-de-datos
 
 # Pasos después de descargar el proyecto.
-
 Después de descargar un proyecto en Laravel desde GitHub, es importante seguir algunos pasos para asegurarte de que el proyecto esté configurado correctamente y listo para su uso. A continuación, se detallan los pasos comunes que debes seguir:
 
 1. Instalación de dependencias
-
 El primer paso es instalar todas las dependencias del proyecto utilizando Composer. Para ello, abre una terminal en la raíz del proyecto y ejecuta el siguiente comando:
 
 ```php
@@ -88,7 +86,6 @@ Este controlador maneja las solicitudes relacionadas con la obtención de datos 
 Métodos Disponibles
 
 1. StateShow
-
 Este método devuelve todos los estados disponibles en la base de datos.
 
 - **Ruta:** `GET /api/states`
@@ -96,7 +93,6 @@ Este método devuelve todos los estados disponibles en la base de datos.
 - **Respuesta:** Una colección de todos los estados.
 
 2. CityShow
-
 Este método devuelve todas las ciudades asociadas a un estado específico.
 
 - **Ruta:** `GET /api/cities`
@@ -105,7 +101,6 @@ Este método devuelve todas las ciudades asociadas a un estado específico.
 - **Respuesta:** Una colección de todas las ciudades asociadas al estado especificado.
 
 3. NeighborhoodShow
-
 Este método devuelve todas las colonias asociadas a una ciudad específica.
 
 - **Ruta:** `GET /api/neighborhoods`
@@ -113,10 +108,39 @@ Este método devuelve todas las colonias asociadas a una ciudad específica.
   - `clave_ciudad`: El ID de la ciudad de la cual se desean obtener las colonias.
 - **Respuesta:** Una colección de todas las colonias asociadas a la ciudad especificada.
 
-Manejo de Errores
+# FairController
 
-Si alguna solicitud no encuentra los datos correspondientes, se devolverá una respuesta con un mensaje de error y un código de estado `404 Not Found`.
+Este controlador maneja las operaciones relacionadas con las ferias y los registros de asistencia.
 
----
+Métodos Disponibles
 
-Este es un resumen de los métodos disponibles en el controlador `DataController`. Asegúrate de ajustar las rutas y la lógica según las necesidades específicas de tu aplicación.
+1. RegisterFair
+
+Este método registra la asistencia de un usuario a una feria.
+
+- **Ruta:** `POST /api/register-fair`
+- **Parámetros de Solicitud:**
+  - `clave_feria`: El ID de la feria a la que el usuario asistirá (entero, requerido).
+  - `curp`: La CURP del usuario que asistirá a la feria (cadena de texto, requerida, máximo 18 caracteres).
+  - `medio`: El ID del medio por el cual se enteró el usuario de la feria (entero, requerido).
+- **Respuesta:** 
+  - `200 OK`: Registro exitoso.
+  - `400 Bad Request`: Datos de solicitud no válidos.
+  - `500 Internal Server Error`: Error al procesar la solicitud.
+
+2. FairShow
+
+Este método devuelve todas las ferias disponibles.
+
+- **Ruta:** `GET /api/fairs`
+- **Parámetros de Solicitud:** Ninguno
+- **Respuesta:** Una colección de todas las ferias disponibles.
+
+3. BadgeShow
+
+Este método devuelve los detalles de la próxima feria a la que el usuario está registrado.
+
+- **Ruta:** `GET /api/badge`
+- **Parámetros de Solicitud:** 
+  - `curp`: La CURP del usuario para el cual se desean obtener los detalles de la próxima feria (cadena de texto, requerida).
+- **Respuesta:** Los detalles de la próxima feria a la que el usuario está registrado, ordenados por proximidad a la fecha actual.
