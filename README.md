@@ -18,3 +18,18 @@ composer install
 php artisan migrate
 ```
 
+
+
+## Cambiar la base de datos en Laravel
+
+1. **Abrir el archivo `.env`**: Encuentra y abre el archivo `.env` en la raíz de tu proyecto Laravel.
+
+2. **Modificar `DB_CONNECTION`**: Cambia la variable `DB_CONNECTION` para seleccionar el controlador de base de datos adecuado. Por ejemplo, cambia de `mysql` a `pgsql` para PostgreSQL.
+
+3. **Modificar otras variables**: Actualiza las variables `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME` y `DB_PASSWORD` según la configuración de tu nueva base de datos.
+
+4. **Guardar los cambios**: Guarda el archivo `.env` después de realizar las modificaciones.
+
+5. **Ejecutar migraciones (opcional)**: Si es necesario, ejecuta las migraciones con `php artisan migrate` para aplicar los cambios en la nueva base de datos.
+
+
